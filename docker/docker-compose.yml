@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+
+  postgres:
+    image: postgres
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: spring_demo
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+  java-service:
+    image: openjdk:17
+    deploy:
+        replicas: 2
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../build/libs:/app
+    command: java -jar /app/showcase-spring-0.0.1-SNAPSHOT.jar
+    depends_on:
+      - postgres
+
+volumes:
+    postgres:
