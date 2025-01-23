@@ -38,6 +38,6 @@ public class UserService {
     }
 
     public Iterable<UserEntity> findAll() {
-        return userRepo.findAll();
+        return userRepo.findAllByOrderByIdAsc();
     }
 }

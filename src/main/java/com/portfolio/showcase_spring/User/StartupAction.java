@@ -11,7 +11,7 @@ import java.util.List;
 
 @Component
 public class StartupAction {
-    private Logger logger = LoggerFactory.getLogger(StartupAction.class);
+    private final Logger logger = LoggerFactory.getLogger(StartupAction.class);
 
     @Autowired
     private UserConfiguration userConfiguration;

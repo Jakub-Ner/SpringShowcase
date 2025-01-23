@@ -1,4 +1,19 @@
 package com.portfolio.showcase_spring.Address;
 
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-public interface AddressRepo extends CrudRepository<AddressEntity, Long> {}
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+public interface AddressRepo extends CrudRepository<AddressEntity, Long> {
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE address SET vacant_count=vacant_count-:decrement WHERE id=:id AND vacant_count >= :decrement", nativeQuery = true)
+    int decrementCount(@Param("id")Long id, @Param("decrement")Integer decrement);
+
+    List<AddressEntity> findAllByOrderByIdAsc();
+}
