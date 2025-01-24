@@ -13,7 +13,13 @@
 ./gradlew build
 docker swarm init --advertise-addr <available-ip>
 docker stack deploy --with-registry-auth -c docker-compose.yml showcase_spring
+```
 
+### Optional commands
+```bash
 # After rebuilding spring application update the service
 docker service update showcase_spring_java-service
+
+# To scale the service
+docker service scale showcase_spring_java-service=<number-of-replicas>
 ```
