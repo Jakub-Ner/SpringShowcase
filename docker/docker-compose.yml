@@ -30,7 +30,7 @@ services:
   java-service:
     image: openjdk:17
     deploy:
-        replicas: 3
+        replicas: 2
     ports:
       - "8080:8080"
     volumes:

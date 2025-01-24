@@ -14,6 +14,7 @@ public class AddressService {
     private final AddressRepo addressRepo;
     private final JmsTemplate jmsTemplate;
 
+    private final static int SLEEP_TIME = 500;
     private final Logger logger = LoggerFactory.getLogger(AddressService.class);
 
     public AddressService(AddressRepo addressRepo, JmsTemplate jmsTemplate) {
@@ -57,7 +58,7 @@ public class AddressService {
     @JmsListener(destination = "rooms.order")
     public void consumeOrder(String message) {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(SLEEP_TIME);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
