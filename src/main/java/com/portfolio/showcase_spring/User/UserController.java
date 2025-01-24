@@ -8,24 +8,19 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserService userService;
 
-  public UserController(UserService userService){
-    this.userService = userService;
-  }
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
-  @GetMapping(value="/all", produces="application/json")
-  public Iterable<UserEntity> getAllUsers(){
-    return userService.findAll();
-  }
-  
-  @PostMapping(value="/one")
-  public void addUser(@RequestBody UserEntity user){
-    userService.save(user);
-  }
+    @GetMapping(value = "/all", produces = "application/json")
+    public Iterable<UserEntity> getAllUsers() {
+        return userService.findAll();
+    }
 
-  @GetMapping(value="/", produces="application/json")
-  public String hello(){
-    return "Hello";
-  }
+    @PostMapping(value = "/one")
+    public void addUser(@RequestBody UserEntity user) {
+        userService.save(user);
+    }
 
 }
 

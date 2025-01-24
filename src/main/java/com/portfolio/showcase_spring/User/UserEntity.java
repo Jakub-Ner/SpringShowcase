@@ -14,7 +14,7 @@ public class UserEntity {
 
     private String name;
 
-    @NotNull(message="username has to be set.")
+    @NotNull(message = "username has to be set.")
     private String username;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -48,6 +48,7 @@ public class UserEntity {
     public AddressEntity getAddress() {
         return address;
     }
+
     public void setAddress(AddressEntity address) {
         this.address = address;
     }

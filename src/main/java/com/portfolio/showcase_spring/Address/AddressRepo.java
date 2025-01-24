@@ -12,8 +12,8 @@ public interface AddressRepo extends CrudRepository<AddressEntity, Long> {
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE address SET vacant_count=vacant_count-:decrement WHERE id=:id AND vacant_count >= :decrement", nativeQuery = true)
-    int decrementCount(@Param("id")Long id, @Param("decrement")Integer decrement);
+    @Query(value = "UPDATE address SET vacant_count=vacant_count+:quantity WHERE id=:id AND vacant_count+:quantity >= 0", nativeQuery = true)
+    int modifyVacantCount(@Param("id") Long id, @Param("quantity") Integer quantity);
 
     List<AddressEntity> findAllByOrderByIdAsc();
 }

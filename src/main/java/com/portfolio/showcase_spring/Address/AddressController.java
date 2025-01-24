@@ -17,9 +17,9 @@ public class AddressController {
         return addressService.findAll();
     }
 
-    @PostMapping("/{id}/decrement/{decrement}")
-    public Integer decrementVacantCount(@PathVariable("id") Long id, @PathVariable("decrement") Integer decrement) {
-        return addressService.decreaseVacantNumber(id, decrement);
+    @PostMapping("/{id}/modify/{quantity}")
+    public void modifyVacantCount(@PathVariable("id") Long id, @PathVariable("quantity") Integer quantity) {
+        addressService.publishOrder(id, quantity);
     }
 
 }

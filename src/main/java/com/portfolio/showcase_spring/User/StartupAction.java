@@ -26,6 +26,10 @@ public class StartupAction {
         logger.info("Seeding users on startup from {}", userConfiguration.getUsersApiUrl());
 
         List<UserEntity> users = userService.fetchUsersFrom3rdParty(userConfiguration.getUsersApiUrl());
-        users.forEach(user -> userService.save(user));
+        try{
+            users.forEach(user -> userService.save(user));
+        } catch (Exception e) {
+            logger.warn("Race condition occurred during seeding users", e);
+        }
     }
 }

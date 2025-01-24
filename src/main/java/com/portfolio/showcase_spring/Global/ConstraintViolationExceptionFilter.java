@@ -2,11 +2,9 @@ package com.portfolio.showcase_spring.Global;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
-import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.HashMap;
@@ -16,14 +14,14 @@ import java.util.Set;
 @RestControllerAdvice
 public class ConstraintViolationExceptionFilter {
 
-    public class ErrorMsg {
-      public ErrorMsg(){
-          errors = new HashMap<>();
-      }
+    public static class ErrorMsg {
+        public ErrorMsg() {
+            errors = new HashMap<>();
+        }
+
         public Map<String, String> errors;
-
-
     }
+
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<ErrorMsg> handle(ConstraintViolationException ex) {
         var errorMsg = new ErrorMsg();

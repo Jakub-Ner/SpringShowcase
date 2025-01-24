@@ -18,11 +18,10 @@ public class AddressEntity {
     @Embedded
     private Geo geo;
 
-    // Getters and Setters
-
     public String getStreet() {
         return street;
     }
+
     public void setStreet(String street) {
         this.street = street;
     }
@@ -62,6 +61,7 @@ public class AddressEntity {
     public void setVacantCount(Integer vacantCount) {
         this.vacantCount = vacantCount;
     }
+
     public Integer getVacantCount() {
         return vacantCount;
     }
